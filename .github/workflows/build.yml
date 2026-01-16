@@ -9,19 +9,19 @@ on:
 env:
   SCHEME: BombermanGame
   PROJECT_PATH: BombermanGame/BombermanGame.xcodeproj
-  DESTINATION: 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
+  DESTINATION: 'platform=iOS Simulator,name=iPhone 16,OS=18.2'
 
 jobs:
   build-and-test:
     name: Build and Test
-    runs-on: macos-14
+    runs-on: macos-15
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       
     - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+      run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
       
     - name: Show Xcode Version
       run: xcodebuild -version
@@ -39,6 +39,7 @@ jobs:
           
     - name: Build
       run: |
+        set -o pipefail
         xcodebuild build \
           -project "${{ env.PROJECT_PATH }}" \
           -scheme "${{ env.SCHEME }}" \
@@ -47,10 +48,11 @@ jobs:
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           ONLY_ACTIVE_ARCH=YES \
-          | xcpretty
+          2>&1 | tee build.log
           
     - name: Run Tests
       run: |
+        set -o pipefail
         xcodebuild test \
           -project "${{ env.PROJECT_PATH }}" \
           -scheme "${{ env.SCHEME }}" \
@@ -60,18 +62,21 @@ jobs:
           CODE_SIGNING_REQUIRED=NO \
           ONLY_ACTIVE_ARCH=YES \
           -enableCodeCoverage YES \
-          | xcpretty
+          2>&1 | tee test.log
           
-    - name: Upload Test Results
+    - name: Upload Build Logs
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: test-results
-        path: ~/Library/Developer/Xcode/DerivedData/**/Logs/Test/*.xcresult
+        name: build-logs
+        path: |
+          build.log
+          test.log
+        if-no-files-found: ignore
         
   lint:
     name: Swift Lint
-    runs-on: macos-14
+    runs-on: macos-15
     
     steps:
     - name: Checkout

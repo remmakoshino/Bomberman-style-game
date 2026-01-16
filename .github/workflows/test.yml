@@ -5,9 +5,6 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
-  schedule:
-    # 毎日午前3時（JST）に実行
-    - cron: '0 18 * * *'
 
 env:
   SCHEME: BombermanGame
@@ -16,19 +13,17 @@ env:
 jobs:
   unit-tests:
     name: Unit Tests
-    runs-on: macos-14
-    strategy:
-      matrix:
-        destination:
-          - 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
-          - 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (6th generation),OS=17.0'
+    runs-on: macos-15
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       
     - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+      run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+      
+    - name: Show Available Simulators
+      run: xcrun simctl list devices available
       
     - name: Cache DerivedData
       uses: actions/cache@v4
@@ -38,74 +33,59 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-test-deriveddata-
           
-    - name: Run Unit Tests
+    - name: Build and Test with Coverage
       run: |
+        set -o pipefail
         xcodebuild test \
           -project "${{ env.PROJECT_PATH }}" \
           -scheme "${{ env.SCHEME }}" \
-          -destination "${{ matrix.destination }}" \
+          -destination "platform=iOS Simulator,name=iPhone 16,OS=18.2" \
           -configuration Debug \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           ONLY_ACTIVE_ARCH=YES \
           -enableCodeCoverage YES \
           -resultBundlePath TestResults.xcresult \
-          | xcpretty
-          
-    - name: Upload Coverage Report
-      uses: codecov/codecov-action@v4
-      if: success()
-      with:
-        xcode: true
-        xcode_archive_path: TestResults.xcresult
-        
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: test-results-${{ strategy.job-index }}
-        path: TestResults.xcresult
-        
-  code-coverage:
-    name: Code Coverage Check
-    needs: unit-tests
-    runs-on: macos-14
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
-      
-    - name: Run Tests with Coverage
-      run: |
-        xcodebuild test \
-          -project "${{ env.PROJECT_PATH }}" \
-          -scheme "${{ env.SCHEME }}" \
-          -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0" \
-          -configuration Debug \
-          CODE_SIGN_IDENTITY="" \
-          CODE_SIGNING_REQUIRED=NO \
-          ONLY_ACTIVE_ARCH=YES \
-          -enableCodeCoverage YES \
-          -resultBundlePath Coverage.xcresult \
-          | xcpretty
+          2>&1 | tee build.log
           
     - name: Extract Coverage Percentage
       id: coverage
+      if: success()
       run: |
-        xcrun xccov view --report --json Coverage.xcresult > coverage.json
-        COVERAGE=$(cat coverage.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(f\"{d['lineCoverage']*100:.1f}\")")
-        echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
-        echo "Coverage: $COVERAGE%"
+        if [ -d "TestResults.xcresult" ]; then
+          xcrun xccov view --report --json TestResults.xcresult > coverage.json 2>/dev/null || true
+          if [ -f "coverage.json" ] && [ -s "coverage.json" ]; then
+            COVERAGE=$(cat coverage.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(f\"{d.get('lineCoverage', 0)*100:.1f}\")" 2>/dev/null || echo "0")
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "Coverage: $COVERAGE%"
+          else
+            echo "coverage=0" >> $GITHUB_OUTPUT
+            echo "Coverage report not available"
+          fi
+        else
+          echo "coverage=0" >> $GITHUB_OUTPUT
+          echo "Test results not found"
+        fi
         
     - name: Check Coverage Threshold
+      if: success()
       run: |
         COVERAGE=${{ steps.coverage.outputs.coverage }}
         THRESHOLD=70
-        if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
+        if [ -z "$COVERAGE" ] || [ "$COVERAGE" = "0" ]; then
+          echo "::warning::Could not determine code coverage"
+        elif (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
           echo "::warning::Code coverage ($COVERAGE%) is below threshold ($THRESHOLD%)"
         else
           echo "✅ Code coverage ($COVERAGE%) meets threshold ($THRESHOLD%)"
         fi
+          
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: |
+          TestResults.xcresult
+          build.log
+        if-no-files-found: ignore

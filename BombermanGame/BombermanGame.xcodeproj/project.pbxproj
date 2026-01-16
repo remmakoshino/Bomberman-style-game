@@ -34,6 +34,9 @@
 		E91234960001 /* BombTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234950001 /* BombTests.swift */; };
 		E91234980001 /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234970001 /* ItemTests.swift */; };
 		E912349A0001 /* EnemyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234990001 /* EnemyTests.swift */; };
+		E912349C0001 /* CollisionSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912349B0002 /* CollisionSystemTests.swift */; };
+		E912349E0001 /* GameConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912349D0001 /* GameConfigTests.swift */; };
+		E91234A00001 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912349F0001 /* ConstantsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		E91234950001 /* BombTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombTests.swift; sourceTree = "<group>"; };
 		E91234970001 /* ItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
 		E91234990001 /* EnemyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyTests.swift; sourceTree = "<group>"; };
+		E912349B0002 /* CollisionSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystemTests.swift; sourceTree = "<group>"; };
+		E912349D0001 /* GameConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfigTests.swift; sourceTree = "<group>"; };
+		E912349F0001 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,9 @@
 				E91234950001 /* BombTests.swift */,
 				E91234970001 /* ItemTests.swift */,
 				E91234990001 /* EnemyTests.swift */,
+				E912349B0002 /* CollisionSystemTests.swift */,
+				E912349D0001 /* GameConfigTests.swift */,
+				E912349F0001 /* ConstantsTests.swift */,
 			);
 			path = BombermanGameTests;
 			sourceTree = "<group>";
@@ -346,6 +355,9 @@
 				E91234960001 /* BombTests.swift in Sources */,
 				E91234980001 /* ItemTests.swift in Sources */,
 				E912349A0001 /* EnemyTests.swift in Sources */,
+				E912349C0001 /* CollisionSystemTests.swift in Sources */,
+				E912349E0001 /* GameConfigTests.swift in Sources */,
+				E91234A00001 /* ConstantsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

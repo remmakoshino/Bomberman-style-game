@@ -26,32 +26,36 @@ final class ConstantsTests: XCTestCase {
     
     func testZPositionOrdering() {
         // 背景が一番後ろ
-        XCTAssertLessThan(Constants.ZPosition.background, Constants.ZPosition.blocks)
+        XCTAssertLessThan(Constants.zPositionBackground, Constants.zPositionBlock)
         
-        // ブロックより爆発が前
-        XCTAssertLessThan(Constants.ZPosition.blocks, Constants.ZPosition.explosion)
+        // ブロックよりアイテムが前
+        XCTAssertLessThan(Constants.zPositionBlock, Constants.zPositionItem)
         
-        // アイテムが適切な位置
-        XCTAssertLessThan(Constants.ZPosition.item, Constants.ZPosition.player)
+        // アイテムより爆弾が前
+        XCTAssertLessThan(Constants.zPositionItem, Constants.zPositionBomb)
         
-        // プレイヤーと敵が前面近く
-        XCTAssertLessThan(Constants.ZPosition.enemy, Constants.ZPosition.player)
+        // 爆弾よりキャラクターが前
+        XCTAssertLessThan(Constants.zPositionBomb, Constants.zPositionCharacter)
+        
+        // キャラクターより爆発が前
+        XCTAssertLessThan(Constants.zPositionCharacter, Constants.zPositionExplosion)
         
         // UIが一番前
-        XCTAssertLessThan(Constants.ZPosition.player, Constants.ZPosition.ui)
+        XCTAssertLessThan(Constants.zPositionExplosion, Constants.zPositionUI)
     }
     
     // MARK: - Physics Category Tests
     
     func testPhysicsCategoriesAreUnique() {
         let categories = [
-            Constants.PhysicsCategory.none,
-            Constants.PhysicsCategory.player,
-            Constants.PhysicsCategory.enemy,
-            Constants.PhysicsCategory.bomb,
-            Constants.PhysicsCategory.explosion,
-            Constants.PhysicsCategory.block,
-            Constants.PhysicsCategory.item
+            Constants.categoryNone,
+            Constants.categoryPlayer,
+            Constants.categoryEnemy,
+            Constants.categoryBomb,
+            Constants.categoryExplosion,
+            Constants.categoryHardBlock,
+            Constants.categorySoftBlock,
+            Constants.categoryItem
         ]
         
         // 各カテゴリがユニーク
@@ -62,12 +66,13 @@ final class ConstantsTests: XCTestCase {
     func testPhysicsCategoriesArePowerOfTwo() {
         // 各カテゴリが2の累乗（ビットマスクとして適切）
         let categories: [UInt32] = [
-            Constants.PhysicsCategory.player,
-            Constants.PhysicsCategory.enemy,
-            Constants.PhysicsCategory.bomb,
-            Constants.PhysicsCategory.explosion,
-            Constants.PhysicsCategory.block,
-            Constants.PhysicsCategory.item
+            Constants.categoryPlayer,
+            Constants.categoryEnemy,
+            Constants.categoryBomb,
+            Constants.categoryExplosion,
+            Constants.categoryHardBlock,
+            Constants.categorySoftBlock,
+            Constants.categoryItem
         ]
         
         for category in categories {
@@ -76,26 +81,43 @@ final class ConstantsTests: XCTestCase {
         }
     }
     
-    // MARK: - Notification Name Tests
+    // MARK: - Player Settings Tests
     
-    func testNotificationNamesExist() {
-        XCTAssertFalse(Constants.NotificationName.gameOver.isEmpty)
-        XCTAssertFalse(Constants.NotificationName.gamePause.isEmpty)
-        XCTAssertFalse(Constants.NotificationName.gameResume.isEmpty)
-        XCTAssertFalse(Constants.NotificationName.stageCleared.isEmpty)
-        XCTAssertFalse(Constants.NotificationName.playerDied.isEmpty)
+    func testPlayerSettings() {
+        XCTAssertGreaterThan(Constants.playerBaseSpeed, 0)
+        XCTAssertGreaterThan(Constants.playerMaxSpeed, Constants.playerBaseSpeed)
+        XCTAssertGreaterThan(Constants.playerInitialBombCount, 0)
+        XCTAssertGreaterThanOrEqual(Constants.playerMaxBombCount, Constants.playerInitialBombCount)
+        XCTAssertGreaterThan(Constants.playerInitialFirePower, 0)
+        XCTAssertGreaterThanOrEqual(Constants.playerMaxFirePower, Constants.playerInitialFirePower)
+        XCTAssertGreaterThan(Constants.playerInitialLives, 0)
     }
     
-    func testNotificationNamesAreUnique() {
-        let names = [
-            Constants.NotificationName.gameOver,
-            Constants.NotificationName.gamePause,
-            Constants.NotificationName.gameResume,
-            Constants.NotificationName.stageCleared,
-            Constants.NotificationName.playerDied
-        ]
-        
-        let uniqueNames = Set(names)
-        XCTAssertEqual(names.count, uniqueNames.count)
+    // MARK: - Bomb Settings Tests
+    
+    func testBombSettings() {
+        XCTAssertEqual(Constants.bombFuseTime, 3.0, accuracy: 0.001)
+        XCTAssertGreaterThan(Constants.explosionDuration, 0)
+        XCTAssertGreaterThan(Constants.chainExplosionDelay, 0)
+    }
+    
+    // MARK: - Item Settings Tests
+    
+    func testItemSettings() {
+        XCTAssertGreaterThan(Constants.itemDropRate, 0)
+        XCTAssertLessThanOrEqual(Constants.itemDropRate, 1)
+        XCTAssertGreaterThan(Constants.invincibilityDuration, 0)
+    }
+    
+    // MARK: - Color Constants Tests
+    
+    func testColorConstants() {
+        XCTAssertTrue(Constants.backgroundColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.hardBlockColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.softBlockColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.playerColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.enemyColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.bombColor.hasPrefix("#"))
+        XCTAssertTrue(Constants.explosionColor.hasPrefix("#"))
     }
 }

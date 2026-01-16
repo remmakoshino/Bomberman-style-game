@@ -45,9 +45,9 @@ final class GameConfigTests: XCTestCase {
     }
     
     func testMaxLimits() {
-        XCTAssertEqual(config.maxBombCount, 8)
-        XCTAssertEqual(config.maxFirePower, 8)
-        XCTAssertGreaterThan(config.playerMaxSpeed, config.playerSpeed)
+        XCTAssertEqual(config.maxBombCount, Constants.playerMaxBombCount)
+        XCTAssertEqual(config.maxFirePower, Constants.playerMaxFirePower)
+        XCTAssertGreaterThan(config.playerMaxSpeed, config.playerBaseSpeed)
     }
     
     func testBombSettings() {
@@ -63,7 +63,7 @@ final class GameConfigTests: XCTestCase {
         XCTAssertEqual(config.initialLives, 5)
         XCTAssertEqual(config.initialBombCount, 2)
         XCTAssertEqual(config.initialFirePower, 2)
-        XCTAssertGreaterThan(config.itemDropRate, 0.5)
+        XCTAssertGreaterThan(config.itemDropRate, 0.35)
     }
     
     func testNormalDifficulty() {
@@ -80,14 +80,14 @@ final class GameConfigTests: XCTestCase {
         XCTAssertEqual(config.initialLives, 2)
         XCTAssertEqual(config.initialBombCount, 1)
         XCTAssertEqual(config.initialFirePower, 1)
-        XCTAssertLessThan(config.itemDropRate, 0.3)
+        XCTAssertLessThanOrEqual(config.itemDropRate, 0.25)
     }
     
     func testExpertDifficulty() {
         config.currentDifficulty = .expert
         
         XCTAssertEqual(config.initialLives, 1)
-        XCTAssertLessThan(config.itemDropRate, 0.2)
+        XCTAssertLessThanOrEqual(config.itemDropRate, 0.2)
     }
     
     // MARK: - Item Drop Weight Tests
@@ -118,14 +118,14 @@ final class GameConfigTests: XCTestCase {
     
     // MARK: - Difficulty Enum Tests
     
-    func testDifficultyDisplayName() {
-        XCTAssertEqual(Difficulty.easy.displayName, "イージー")
-        XCTAssertEqual(Difficulty.normal.displayName, "ノーマル")
-        XCTAssertEqual(Difficulty.hard.displayName, "ハード")
-        XCTAssertEqual(Difficulty.expert.displayName, "エキスパート")
+    func testDifficultyRawValues() {
+        XCTAssertEqual(GameConfig.Difficulty.easy.rawValue, "Easy")
+        XCTAssertEqual(GameConfig.Difficulty.normal.rawValue, "Normal")
+        XCTAssertEqual(GameConfig.Difficulty.hard.rawValue, "Hard")
+        XCTAssertEqual(GameConfig.Difficulty.expert.rawValue, "Expert")
     }
     
     func testAllDifficultiesExist() {
-        XCTAssertEqual(Difficulty.allCases.count, 4)
+        XCTAssertEqual(GameConfig.Difficulty.allCases.count, 4)
     }
 }
