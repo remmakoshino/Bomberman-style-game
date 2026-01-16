@@ -1,0 +1,12 @@
+app_identifier("com.bomberman.game")
+apple_id(ENV["APPLE_ID"])
+team_id(ENV["TEAM_ID"])
+
+itc_team_id(ENV["ITC_TEAM_ID"])
+
+# App Store Connect APIキーを使用する場合はこちらを設定
+# app_store_connect_api_key(
+#   key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+#   issuer_id: ENV["APP_STORE_CONNECT_API_ISSUER_ID"],
+#   key_filepath: ENV["APP_STORE_CONNECT_API_KEY_PATH"]
+# )

@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E91234560001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234550001 /* AppDelegate.swift */; };
+		E91234580001 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234570001 /* GameViewController.swift */; };
+		E912345A0001 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234590001 /* GameScene.swift */; };
+		E912345C0001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E912345B0001 /* Assets.xcassets */; };
+		E912345F0001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E912345D0001 /* LaunchScreen.storyboard */; };
+		E91234610001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E91234600001 /* Main.storyboard */; };
+		E91234700001 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912346F0001 /* GameManager.swift */; };
+		E91234720001 /* GridSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234710001 /* GridSystem.swift */; };
+		E91234740001 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234730001 /* Player.swift */; };
+		E91234760001 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234750001 /* Bomb.swift */; };
+		E91234780001 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234770001 /* Block.swift */; };
+		E912347A0001 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234790001 /* Item.swift */; };
+		E912347C0001 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912347B0001 /* Enemy.swift */; };
+		E912347E0001 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912347D0001 /* GameConfig.swift */; };
+		E91234800001 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912347F0001 /* InputController.swift */; };
+		E91234820001 /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234810001 /* Explosion.swift */; };
+		E91234840001 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234830001 /* GameState.swift */; };
+		E91234860001 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234850001 /* CollisionSystem.swift */; };
+		E91234880001 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234870001 /* AudioManager.swift */; };
+		E912348A0001 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234890001 /* Extensions.swift */; };
+		E912348C0001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912348B0001 /* Constants.swift */; };
+		E91234900001 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912348F0001 /* GameManagerTests.swift */; };
+		E91234920001 /* GridSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234910001 /* GridSystemTests.swift */; };
+		E91234940001 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234930001 /* PlayerTests.swift */; };
+		E91234960001 /* BombTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234950001 /* BombTests.swift */; };
+		E91234980001 /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234970001 /* ItemTests.swift */; };
+		E912349A0001 /* EnemyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91234990001 /* EnemyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E912348D0001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E912344A0001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E91234510001;
+			remoteInfo = BombermanGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E91234520001 /* BombermanGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BombermanGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91234550001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E91234570001 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E91234590001 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E912345B0001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E912345E0001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E91234600001 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E91234620001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E912346F0001 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		E91234710001 /* GridSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSystem.swift; sourceTree = "<group>"; };
+		E91234730001 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E91234750001 /* Bomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
+		E91234770001 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		E91234790001 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E912347B0001 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		E912347D0001 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		E912347F0001 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
+		E91234810001 /* Explosion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explosion.swift; sourceTree = "<group>"; };
+		E91234830001 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		E91234850001 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
+		E91234870001 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		E91234890001 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E912348B0001 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E912348E0001 /* BombermanGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BombermanGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E912348F0001 /* GameManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
+		E91234910001 /* GridSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSystemTests.swift; sourceTree = "<group>"; };
+		E91234930001 /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		E91234950001 /* BombTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombTests.swift; sourceTree = "<group>"; };
+		E91234970001 /* ItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
+		E91234990001 /* EnemyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E912344F0001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E912348B0002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E91234490001 = {
+			isa = PBXGroup;
+			children = (
+				E91234540001 /* BombermanGame */,
+				E912349B0001 /* BombermanGameTests */,
+				E91234530001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E91234530001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E91234520001 /* BombermanGame.app */,
+				E912348E0001 /* BombermanGameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E91234540001 /* BombermanGame */ = {
+			isa = PBXGroup;
+			children = (
+				E91234630001 /* Sources */,
+				E91234640001 /* Resources */,
+				E91234620001 /* Info.plist */,
+			);
+			path = BombermanGame;
+			sourceTree = "<group>";
+		};
+		E91234630001 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E91234650001 /* App */,
+				E91234660001 /* Game */,
+				E91234670001 /* Models */,
+				E91234680001 /* Systems */,
+				E91234690001 /* UI */,
+				E912346A0001 /* Utils */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E91234640001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E912345B0001 /* Assets.xcassets */,
+				E912345D0001 /* LaunchScreen.storyboard */,
+				E91234600001 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E91234650001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E91234550001 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E91234660001 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E91234570001 /* GameViewController.swift */,
+				E91234590001 /* GameScene.swift */,
+				E912346F0001 /* GameManager.swift */,
+				E91234830001 /* GameState.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		E91234670001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E91234730001 /* Player.swift */,
+				E91234750001 /* Bomb.swift */,
+				E91234770001 /* Block.swift */,
+				E91234790001 /* Item.swift */,
+				E912347B0001 /* Enemy.swift */,
+				E91234810001 /* Explosion.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E91234680001 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				E91234710001 /* GridSystem.swift */,
+				E91234850001 /* CollisionSystem.swift */,
+				E912347F0001 /* InputController.swift */,
+				E91234870001 /* AudioManager.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		E91234690001 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E912346A0001 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E912347D0001 /* GameConfig.swift */,
+				E91234890001 /* Extensions.swift */,
+				E912348B0001 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E912349B0001 /* BombermanGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				E912348F0001 /* GameManagerTests.swift */,
+				E91234910001 /* GridSystemTests.swift */,
+				E91234930001 /* PlayerTests.swift */,
+				E91234950001 /* BombTests.swift */,
+				E91234970001 /* ItemTests.swift */,
+				E91234990001 /* EnemyTests.swift */,
+			);
+			path = BombermanGameTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E91234510001 /* BombermanGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E91234660002 /* Build configuration list for PBXNativeTarget "BombermanGame" */;
+			buildPhases = (
+				E912344E0001 /* Sources */,
+				E912344F0001 /* Frameworks */,
+				E91234500001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BombermanGame;
+			productName = BombermanGame;
+			productReference = E91234520001 /* BombermanGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E912348C0002 /* BombermanGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E91234690002 /* Build configuration list for PBXNativeTarget "BombermanGameTests" */;
+			buildPhases = (
+				E912348A0002 /* Sources */,
+				E912348B0002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E912348D0002 /* PBXTargetDependency */,
+			);
+			name = BombermanGameTests;
+			productName = BombermanGameTests;
+			productReference = E912348E0001 /* BombermanGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E912344A0001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E91234510001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					E912348C0002 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = E91234510001;
+					};
+				};
+			};
+			buildConfigurationList = E912344D0001 /* Build configuration list for PBXProject "BombermanGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = E91234490001;
+			productRefGroup = E91234530001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E91234510001 /* BombermanGame */,
+				E912348C0002 /* BombermanGameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E91234500001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E912345C0001 /* Assets.xcassets in Resources */,
+				E912345F0001 /* LaunchScreen.storyboard in Resources */,
+				E91234610001 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E912344E0001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91234560001 /* AppDelegate.swift in Sources */,
+				E91234580001 /* GameViewController.swift in Sources */,
+				E912345A0001 /* GameScene.swift in Sources */,
+				E91234700001 /* GameManager.swift in Sources */,
+				E91234720001 /* GridSystem.swift in Sources */,
+				E91234740001 /* Player.swift in Sources */,
+				E91234760001 /* Bomb.swift in Sources */,
+				E91234780001 /* Block.swift in Sources */,
+				E912347A0001 /* Item.swift in Sources */,
+				E912347C0001 /* Enemy.swift in Sources */,
+				E912347E0001 /* GameConfig.swift in Sources */,
+				E91234800001 /* InputController.swift in Sources */,
+				E91234820001 /* Explosion.swift in Sources */,
+				E91234840001 /* GameState.swift in Sources */,
+				E91234860001 /* CollisionSystem.swift in Sources */,
+				E91234880001 /* AudioManager.swift in Sources */,
+				E912348A0001 /* Extensions.swift in Sources */,
+				E912348C0001 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E912348A0002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91234900001 /* GameManagerTests.swift in Sources */,
+				E91234920001 /* GridSystemTests.swift in Sources */,
+				E91234940001 /* PlayerTests.swift in Sources */,
+				E91234960001 /* BombTests.swift in Sources */,
+				E91234980001 /* ItemTests.swift in Sources */,
+				E912349A0001 /* EnemyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E912348D0002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E91234510001 /* BombermanGame */;
+			targetProxy = E912348D0001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E912345D0001 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E912345E0001 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E91234630002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E91234640002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E91234670002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BombermanGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomberman.game;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E91234680002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BombermanGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomberman.game;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E912346A0002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomberman.game.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BombermanGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BombermanGame";
+			};
+			name = Debug;
+		};
+		E912346B0002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bomberman.game.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BombermanGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BombermanGame";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E912344D0001 /* Build configuration list for PBXProject "BombermanGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91234630002 /* Debug */,
+				E91234640002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E91234660002 /* Build configuration list for PBXNativeTarget "BombermanGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91234670002 /* Debug */,
+				E91234680002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E91234690002 /* Build configuration list for PBXNativeTarget "BombermanGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E912346A0002 /* Debug */,
+				E912346B0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E912344A0001 /* Project object */;
+}

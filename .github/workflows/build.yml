@@ -1,0 +1,86 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  SCHEME: BombermanGame
+  PROJECT_PATH: BombermanGame/BombermanGame.xcodeproj
+  DESTINATION: 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-14
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Select Xcode Version
+      run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+      
+    - name: Show Xcode Version
+      run: xcodebuild -version
+      
+    - name: List Available Simulators
+      run: xcrun simctl list devices available
+      
+    - name: Cache DerivedData
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-deriveddata-${{ hashFiles('**/*.pbxproj') }}
+        restore-keys: |
+          ${{ runner.os }}-deriveddata-
+          
+    - name: Build
+      run: |
+        xcodebuild build \
+          -project "${{ env.PROJECT_PATH }}" \
+          -scheme "${{ env.SCHEME }}" \
+          -destination "${{ env.DESTINATION }}" \
+          -configuration Debug \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          ONLY_ACTIVE_ARCH=YES \
+          | xcpretty
+          
+    - name: Run Tests
+      run: |
+        xcodebuild test \
+          -project "${{ env.PROJECT_PATH }}" \
+          -scheme "${{ env.SCHEME }}" \
+          -destination "${{ env.DESTINATION }}" \
+          -configuration Debug \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          ONLY_ACTIVE_ARCH=YES \
+          -enableCodeCoverage YES \
+          | xcpretty
+          
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: ~/Library/Developer/Xcode/DerivedData/**/Logs/Test/*.xcresult
+        
+  lint:
+    name: Swift Lint
+    runs-on: macos-14
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Install SwiftLint
+      run: brew install swiftlint
+      
+    - name: Run SwiftLint
+      run: |
+        cd BombermanGame
+        swiftlint lint --reporter github-actions-logging || true
